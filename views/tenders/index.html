@@ -1,6 +1,26 @@
 <div class="container">
 
-    <h4>List of tenders:</h4>
+    <div class="d-flex justify-content-between">
+        <h4>List of tenders:</h4>
+    
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-end">
+                <li class="page-item" ng-class="links.prev == null ? 'disabled' : ''" ng-click="changeListPage(links.first)">
+                    <a class="page-link" href="">First</a>
+                </li>
+                <li class="page-item" ng-class="links.prev == null ? 'disabled' : ''" ng-click="links.prev != null ? changeListPage(links.prev) : return">
+                    <a class="page-link" href="">‹</a>
+                </li>
+                <li class="page-item" ng-class="links.next == null ? 'disabled' : ''" ng-click="links.next != null ? changeListPage(links.next) : return">
+                    <a class="page-link" href="">›</a>
+                </li>
+                <li class="page-item" ng-class="links.next == null ? 'disabled' : ''" ng-click="links.next != null ? changeListPage(links.last) : return">
+                    <a class="page-link" href="" >Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
     <table class="table table-sm table-striped table-hover">
         <thead>
             <tr>

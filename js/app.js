@@ -25,6 +25,10 @@ app.factory('tendersFactory', function ($http, $routeParams) {
     factory.getTenderList = function () {
         return $http.get('http://localhost:8000/api/tenders');
     }
+    
+    factory.getTenderListFromPageUrl = function (url) {
+        return $http.get(url);
+    }
 
     factory.getTender = function () {
         return $http.get('http://localhost:8000/api/tenders/' + $routeParams.tenderId);
@@ -50,12 +54,25 @@ controllers.TenderListController = function($scope, tendersFactory, $location) {
     tendersFactory.getTenderList()
         .then(function success(response) {
             $scope.tenders = response.data.data;
+            $scope.links = response.data.links;
+            $scope.meta = response.data.meta;
         }, function error(response) {
             console.log(response);
         });
 
     $scope.showTender = function(tender) {
         $location.path(tender.links.self);
+    };
+
+    $scope.changeListPage = function(url) {
+        tendersFactory.getTenderListFromPageUrl(url)
+            .then(function success(response) {
+                $scope.tenders = response.data.data;
+                $scope.links = response.data.links;
+                $scope.meta = response.data.meta;
+            }, function error(response) {
+                console.log(response);
+            });
     };
 }
 controllers.TenderShowController = function($scope, tendersFactory, $location) {
