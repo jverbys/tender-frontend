@@ -1,0 +1,16 @@
+<div class="container">
+
+    <h4>Create a new tender</h4>
+
+    <div class="form-group">
+        <label for="title">Tender title:</label>
+        <input type="text" class="form-control" id="title" ng-model="tender.data.title">
+    </div>
+    <div class="form-group">
+        <label for="description">Tender description:</label>
+        <textarea name="" class="form-control" id="description" rows="6" ng-model="tender.data.description"></textarea>
+    </div>
+
+    <button class="btn btn-primary float-right" ng-click="createTender(tender.data)">Create</button>
+
+</div>

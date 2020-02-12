@@ -2,11 +2,16 @@
 
     <div class="form-group">
         <label for="title">Tender title:</label>
-        <input type="text" class="form-control" id="title" value="{{ tender.data.title }}">
+        <input type="text" class="form-control" id="title" value="{{ tender.data.title }}" ng-model="tender.data.title">
     </div>
     <div class="form-group">
         <label for="description">Tender description:</label>
-        <textarea name="" class="form-control" id="description" rows="6">{{ tender.data.description }}</textarea>
+        <textarea name="" class="form-control" id="description" rows="6" ng-model="tender.data.description">{{ tender.data.description }}</textarea>
+    </div>
+
+    <div class="d-flex justify-content-between">
+        <button class="btn btn-danger" ng-click="deleteTender()">Delete</button>
+        <button class="btn btn-primary" ng-click="updateTender(tender.data)">Save changes</button>
     </div>
 
 </div>
